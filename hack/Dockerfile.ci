@@ -7,9 +7,9 @@ RUN mkdir -p /go/src/github.com/drweber/k8s-podinfo/
 
 WORKDIR /go/src/github.com/drweber/k8s-podinfo
 
-ADD https://github.com/drweber/k8s-podinfo/archive/v1.4.2.tar.gz .
+ADD https://github.com/drweber/k8s-podinfo/archive/v1.4.2u.tar.gz .
 
-RUN tar xzf v1.4.2.tar.gz --strip 1
+RUN tar xzf v1.4.2u.tar.gz --strip 1
 
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w \
   -X github.com/drweber/k8s-podinfo/pkg/version.GITCOMMIT=${GITCOMMIT} \
