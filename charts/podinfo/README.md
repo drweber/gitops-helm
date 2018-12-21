@@ -39,7 +39,7 @@ Parameter | Description | Default
 `ingress.hosts` | Ingress accepted hostnames | None
 `ingress.tls` | Ingress TLS configuration | None:
 `image.pullPolicy` | Image pull policy | `IfNotPresent`
-`image.repository` | Image repository | `stefanprodan/podinfo`
+`image.repository` | Image repository | `drweber/podinfo`
 `image.tag` | Image tag | `0.0.1`
 `ingress.enabled` | Enables Ingress | `false`
 `ingress.annotations` | Ingress annotations | None

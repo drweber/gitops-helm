@@ -7,6 +7,6 @@ home: https://github.com/bitnami-labs/sealed-secrets
 sources:
 - https://github.com/bitnami-labs/sealed-secrets
 maintainers:
-  - name: stefanprodan
-    email: stefanprodan@users.noreply.github.com
+  - name: drweber
+    email: drweber@users.noreply.github.com
 engine: gotpl
