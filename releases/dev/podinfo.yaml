@@ -14,7 +14,7 @@ spec:
     path: charts/podinfo
     ref: master
   values:
-    image: drweber/podinfo:dev-hdtwcel9
+    image: drweber/podinfo:dev-
     replicaCount: 1
     hpa:
       enabled: false
