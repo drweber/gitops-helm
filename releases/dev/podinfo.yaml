@@ -14,7 +14,7 @@ spec:
     path: charts/podinfo
     ref: master
   values:
-    image: gcr.io/net2phone-sandbox/podinfo:dev-ragwv9ep
+    image: gcr.io/net2phone-sandbox/podinfo:dev-0f2wd0nw
     replicaCount: 1
     hpa:
       enabled: false
