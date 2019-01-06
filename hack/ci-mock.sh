@@ -7,7 +7,7 @@ branch="master"
 version=""
 commit=$(LC_ALL=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 8 | head -n 1| awk '{print tolower($0)}')
 
-while getopts :r:b:v: o; do
+while getopts :r:a:b:v: o; do
     case "${o}" in
         r)
             repository=${OPTARG}
