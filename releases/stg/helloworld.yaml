@@ -15,7 +15,7 @@ spec:
     ref: master
   values:
     containerPort: 8081
-    image: gcr.io/net2phone-sandbox/hello:stg-9ij63o4c
+    image: gcr.io/net2phone-sandbox/hello:stg-8000
     replicaCount: 2
     hpa:
       enabled: true
