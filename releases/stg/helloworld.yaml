@@ -2,22 +2,23 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: podinfo-rc
+  name: helloworld-rc
   namespace: stg
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: glob:stg-*
 spec:
-  releaseName: podinfo-rc
+  releaseName: helloworld-rc
   chart:
     git: git@github.com:drweber/gitops-helm
-    path: charts/podinfo
+    path: charts/helloworld
     ref: master
   values:
-    image: drweber/podinfo:stg-9ij63o4c
+    containerPort: 8081
+    image: gcr.io/net2phone-sandbox/hello:stg-9ij63o4c
     replicaCount: 2
     hpa:
       enabled: true
-      maxReplicas: 10
-      cpu: 50
-      memory: 256Mi
+      maxReplicas: 3
+      cpu: 10m
+      memory: 16Mi

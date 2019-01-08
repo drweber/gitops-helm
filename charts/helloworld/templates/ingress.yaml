@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: helloweb
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: k8s-n2p
+  labels:
+    app: hello
+spec:
+  backend:
+    serviceName: helloweb-backend
+    servicePort: {{ .Values.service.containerPort }}
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: simple-fanout-example
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+      paths:
+        - path: /dev
+          backend:
+            serviceName: helloweb-backend
+            servicePort: 8080
+        - path: /stg
+          backend:
+            serviceName: helloweb-backend
+            servicePort: 8081
+        - path: /prod
+          backend:
+            serviceName: helloweb-backend
+            servicePort: 8082

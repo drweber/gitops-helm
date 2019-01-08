@@ -1,0 +1,32 @@
+#LoadBalancer
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: helloweb
+#  labels:
+#    app: hello
+#spec:
+#  selector:
+#    app: hello
+#    tier: httpd
+#  ports:
+#    - port: {{ .Values.service.externalPort }}
+#      targetPort: {{ .Values.service.containerPort }}
+#  type: LoadBalancer
+#  loadBalancerIP: "35.190.49.94"
+
+#Ingress
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloweb-backend
+  labels:
+    app: hello
+spec:
+  type: NodePort
+  selector:
+    app: hello
+    tier: web
+  ports:
+    - port: {{ .Values.service.containerPort }}
+      targetPort: {{ .Values.service.containerPort }}

@@ -2,19 +2,20 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: podinfo-dev
+  name: helloworld-dev
   namespace: dev
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: glob:dev-*
 spec:
-  releaseName: podinfo-dev
+  releaseName: helloworld-dev
   chart:
     git: git@github.com:drweber/gitops-helm
-    path: charts/podinfo
+    path: charts/helloworld
     ref: master
   values:
-    image: gcr.io/net2phone-sandbox/podinfo:dev-0f2wd0nw
+    containerPort: 8080
+    image: gcr.io/net2phone-sandbox/hello:dev-0f2wd0nw
     replicaCount: 1
     hpa:
       enabled: false

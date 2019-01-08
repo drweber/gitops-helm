@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 repository="gcr.io/net2phone-sandbox"
-appname="podinfo"
+appname="hello"
 #repository="drweber"
 branch="master"
 version=""
