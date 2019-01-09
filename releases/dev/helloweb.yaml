@@ -14,7 +14,7 @@ spec:
     path: charts/helloweb
     ref: master
   values:
-    containerPort: 8080
+    containerPort: 8000
     image: gcr.io/net2phone-sandbox/hello:dev-8000
     replicaCount: 1
     hpa:
