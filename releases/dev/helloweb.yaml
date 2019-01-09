@@ -15,5 +15,5 @@ spec:
     ref: master
   values:
     containerPort: 8000
-    image: gcr.io/net2phone-sandbox/hello:dev-omxtc4bh
+    image: gcr.io/net2phone-sandbox/hello:dev-nlvuwobq
     replicaCount: 1
