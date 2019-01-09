@@ -1,32 +1,18 @@
-FROM golang:1.11 as builder
+FROM busybox
+MAINTAINER Nikolay
 
-ARG VERSION=unknown
-ARG GITCOMMIT=unknown
+ARG build_expose_port=8000
+ENV env_expose_port=$build_expose_port
 
-RUN mkdir -p /go/src/github.com/drweber/k8s-podinfo/
+WORKDIR /www
 
-WORKDIR /go/src/github.com/drweber/k8s-podinfo
+RUN echo "<xmp>" > /www/index.html
+RUN echo "Hello World" >> /www/index.html
+RUN echo "I'm on port $env_expose_port" >> /www/index.html
 
-ADD https://github.com/drweber/k8s-podinfo/archive/v1.4.2u.tar.gz .
+#ADD index.html /www/index.html
 
-RUN tar xzf v1.4.2u.tar.gz --strip 1
+EXPOSE $env_expose_port
 
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w \
-  -X github.com/drweber/k8s-podinfo/pkg/version.GITCOMMIT=${GITCOMMIT} \
-  -X github.com/drweber/k8s-podinfo/pkg/version.VERSION=${VERSION}" \
-  -a -installsuffix cgo -o podinfo ./cmd/podinfo
-
-FROM alpine:3.7
-
-RUN addgroup -S app \
-    && adduser -S -g app app
-
-WORKDIR /home/app
-
-COPY --from=builder /go/src/github.com/drweber/k8s-podinfo/podinfo .
-
-RUN chown -R app:app ./
-
-USER app
-
-CMD ["./podinfo"]
+# Create a basic webserver and run it until the container is stopped
+CMD trap "exit 0;" TERM INT; date >> /www/index.html; echo "</xmp>" >> /www/index.html; httpd -p $env_expose_port -h /www -f & wait

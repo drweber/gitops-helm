@@ -2,16 +2,16 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: helloworld-prod
+  name: helloweb-prod
   namespace: prod
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: semver:~0.1
 spec:
-  releaseName: podinfo-prod
+  releaseName: helloweb-prod
   chart:
     git: git@github.com:drweber/gitops-helm
-    path: charts/helloworld
+    path: charts/helloweb
     ref: master
   values:
     containerPort: 8082

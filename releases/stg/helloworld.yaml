@@ -2,16 +2,16 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: helloworld-rc
+  name: helloweb-rc
   namespace: stg
   annotations:
     flux.weave.works/automated: "true"
     flux.weave.works/tag.chart-image: glob:stg-*
 spec:
-  releaseName: helloworld-rc
+  releaseName: helloweb-rc
   chart:
     git: git@github.com:drweber/gitops-helm
-    path: charts/helloworld
+    path: charts/helloweb
     ref: master
   values:
     containerPort: 8081

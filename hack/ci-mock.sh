@@ -18,25 +18,25 @@ while getopts :r:a:b:v: o; do
         b)
             branch=${OPTARG}
             ;;
-        v)
-            version=${OPTARG}
+        p)
+            port=${OPTARG}
             ;;
     esac
 done
 shift $((OPTIND-1))
 
-if [ -z "${version}" ]; then
+if [ -z "${port}" ]; then
     image="${repository}/${appname}:${branch}-${commit}"
-    version="1.4.2u"
+    port="8000"
 else
-    image="${repository}:${version}"
+    image="${repository}:${port}"
 fi
 
 echo ">>>> Building image ${image} <<<<"
 
 echo " Image name is " ${image}
 
-docker build --build-arg GITCOMMIT=${commit} --build-arg VERSION=${version} -t ${image} -f Dockerfile.ci .
+docker build --build-arg build_expose_port=${port} -t ${image} -f Dockerfile.ci .
 
 echo " Image name is " ${image}
 
