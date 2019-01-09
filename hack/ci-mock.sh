@@ -6,6 +6,7 @@ appname="hello"
 branch="master"
 version=""
 commit=$(LC_ALL=C tr -dc 'a-zA-Z0-9' < /dev/urandom | fold -w 8 | head -n 1| awk '{print tolower($0)}')
+port="8000"
 
 while getopts :r:a:b:v: o; do
     case "${o}" in
@@ -21,15 +22,17 @@ while getopts :r:a:b:v: o; do
         p)
             port=${OPTARG}
             ;;
+        v)
+            version=${OPTARG}
+            ;;
     esac
 done
 shift $((OPTIND-1))
 
-if [ -z "${port}" ]; then
+if [ -z "${version}" ]; then
     image="${repository}/${appname}:${branch}-${commit}"
-    port="8000"
 else
-    image="${repository}:${port}"
+    image="${repository}:${version}"
 fi
 
 echo ">>>> Building image ${image} <<<<"
