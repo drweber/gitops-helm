@@ -4,10 +4,8 @@
 
 replicaCount: 1
 
-image:
-  repository: gcr.io/net2phone-sandbox/hello
-  tag: 0.1
-  pullPolicy: IfNotPresent
+image: gcr.io/net2phone-sandbox/hello:01
+imagePullPolicy: IfNotPresent
 
 nameOverride: ""
 fullnameOverride: ""

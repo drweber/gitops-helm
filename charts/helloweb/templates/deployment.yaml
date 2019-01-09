@@ -18,6 +18,7 @@ spec:
     spec:
       containers:
         - name: hello
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image }}"
+          imagePullPolicy: {{ .Values.imagePullPolicy }}
           ports:
             - containerPort: {{ .Values.service.containerPort }}
