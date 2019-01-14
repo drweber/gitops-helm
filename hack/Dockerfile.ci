@@ -9,6 +9,8 @@ WORKDIR /www
 RUN echo "<xmp>" > /www/index.html
 RUN echo "Hello World" >> /www/index.html
 RUN echo "I'm on port $env_expose_port" >> /www/index.html
+RUN echo "new one image should be" >> /www/index.html
+RUN echo "new one image should be!!afmnakfla" >> /www/index.html
 
 #ADD index.html /www/index.html
 
